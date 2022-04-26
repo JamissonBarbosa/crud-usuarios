@@ -1,18 +1,6 @@
-import Sequelize from "sequelize";
+import Sequelize  from 'sequelize';
 
-export const sequelize = new Sequelize(
-  "postgres_db", // db name,
-  "admin", // username
-  "", // password
-  {
-    host: "localhost",
-    dialect: "postgres",
-    pool: {
-      max: 5,
-      min: 0,
-      require: 30000,
-      idle: 10000,
-    },
-    logging: false,
-  }
-);
+export const sequelize = new Sequelize('database', 'username', 'password', {
+  host: 'localhost',
+  dialect: 'sqlite'
+})
