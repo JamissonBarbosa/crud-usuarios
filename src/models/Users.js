@@ -1,5 +1,6 @@
 import {DataTypes} from 'sequelize'
 import {sequelize} from '../database/database.js'
+import {Cars} from './Cars.js'
 
 
 export const Users = sequelize.define('users', {
@@ -12,7 +13,7 @@ export const Users = sequelize.define('users', {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
-    nome:{
+    name:{
         type: DataTypes.STRING,
     },
     email:{
@@ -34,3 +35,14 @@ export const Users = sequelize.define('users', {
     updatedAt: true
     
 })
+
+Users.hasMany(Cars, {
+    foreignkey: 'userCarsId',
+    sourceKey: 'id'
+})
+
+Users.belongsTo(Users, {
+    foreignkey: 'userCarsId',
+    targetID: 'id'
+})
+
